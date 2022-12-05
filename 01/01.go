@@ -24,7 +24,7 @@ func main() {
 		if scanner.Text() != "" {
 			fmt.Println(scanner.Text())
 			currNumb, _ := strconv.Atoi(scanner.Text())
-			currentNumber = currentNumber + currNumb
+			currentNumber += currNumb
 		} else {
 			first, second, third := placing(firstPlace, secondPlace, thirdPlace, currentNumber)
 			firstPlace = first
