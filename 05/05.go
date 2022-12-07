@@ -29,12 +29,6 @@ func main() {
 	var qty int
 	var from int
 	var to int
-	// for i := 0; i < len(stack); i++ {
-	// 	for j := 0; j < len(stack[i]); j++ {
-	// 		fmt.Printf("%s\n", stack[i][j])
-	// 	}
-	// 	fmt.Println()
-	// }
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		//making the different params for moving crates
@@ -43,21 +37,16 @@ func main() {
 		qty, _ = strconv.Atoi(split[1])
 		from, _ = strconv.Atoi(split[3])
 		to, _ = strconv.Atoi(split[5])
-		//moving the crates
 		for i := 0; i < qty; i++ {
 			crate, nStack := Pop(stack[from-1])
 			stack[from-1] = nStack
 			pStack := Push(stack[to-1], crate)
 			stack[to-1] = pStack
 		}
-		// fmt.Printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n", stack[0], stack[1], stack[2], stack[3], stack[4], stack[5], stack[6], stack[7], stack[8])
+
 	}
-	// fmt.Printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n", stack[0], stack[1], stack[2], stack[3], stack[4], stack[5], stack[6], stack[7], stack[8])
 	for i := 0; i < len(stack); i++ {
-		for j := 0; j < len(stack[i]); j++ {
-			fmt.Printf("%s\n", stack[i][j])
-		}
-		fmt.Println()
+		fmt.Printf("%s", stack[i][len(stack[i])-1])
 	}
 }
 func Pop(stack []string) (string, []string) {
@@ -68,11 +57,4 @@ func Pop(stack []string) (string, []string) {
 func Push(stack []string, item string) []string {
 	stack = append(stack, item)
 	return stack
-}
-func revSlice(slice []string) []string {
-	reversed := []string{}
-	for i := range slice {
-		reversed = append(reversed, slice[len(slice)-1-i])
-	}
-	return reversed
 }
