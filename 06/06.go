@@ -12,6 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer f.Close()
 	startMarker := []string{}
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {

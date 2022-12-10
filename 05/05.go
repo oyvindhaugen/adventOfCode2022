@@ -25,6 +25,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer f.Close()
 
 	var qty int
 	var from int
